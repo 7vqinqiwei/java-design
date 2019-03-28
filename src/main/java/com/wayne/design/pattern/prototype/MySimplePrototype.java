@@ -25,6 +25,7 @@ public class MySimplePrototype implements MyPrototype,Cloneable {
      * @param args
      * @throws CloneNotSupportedException
      */
+    /*
     public static void main(String[] args) throws CloneNotSupportedException {
 
         MySimplePrototype mySimplePrototype = new MySimplePrototype();
@@ -36,6 +37,6 @@ public class MySimplePrototype implements MyPrototype,Cloneable {
         newObject.value = 500;
         System.out.println(newObject.value);
 
-    }
+    }*/
 
 }
