@@ -1,12 +1,17 @@
 package com.wayne.design.pattern.adapter;
 
+import org.junit.Test;
+
+import static org.junit.Assert.*;
+
 /**
  * @Author: waynechin
- * @Date: 2019/3/28 16:31
+ * @Date: 2019/3/28 17:45
  */
-public class AdapterTest {
+public class ClassAdapterTest {
 
-    public static void main(String[] args) {
+    @Test
+    public void method() {
         //类适配器 : 简单来说就是使用一个接口将原来的方法和新增的方法封装进去 然后只需要实现新方法的类
         // -- 此时适配器含有原方法和新方法的类  专注于新方法 原方法不动
         AdapterTargetable target = new ClassAdapter();
@@ -30,8 +35,5 @@ public class AdapterTest {
 
         sub2.method1();
         sub2.method2();
-
-
-
     }
 }
