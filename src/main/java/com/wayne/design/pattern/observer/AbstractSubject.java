@@ -9,7 +9,7 @@ import java.util.Vector;
  */
 public abstract class AbstractSubject implements Subject{
 
-    private Vector<Observer> vector = new Vector<Observer>();
+    private Vector<Observer> vector = new Vector<>();
 
     @Override
     public void add(Observer observer) {
