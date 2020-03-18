@@ -5,31 +5,22 @@ import com.wayne.design.structure._01数组.List;
 
 /**
  * 单向链表
+ *
  * @author
  */
 public class SingleLinkedList<E> extends AbstractList<E> {
 
     private Node<E> first;
 
-    class Node<E> {
-        E element;
-        Node<E> next;
-        public Node(E element,Node<E> next){
-            this.element = element;
-            this.next = next;
-        }
-
-    }
-
     @Override
     public void add(int index, E element) {
         rangeCheckForAdd(index);
-        if (index == 0){
-            Node<E> newNode = new Node<>(element,first);
+        if (index == 0) {
+            Node<E> newNode = new Node<>(element, first);
             first = newNode;
-        }else{
-            Node<E> prev = node(index-1);
-            Node<E> newNode = new Node<>(element,prev.next);
+        } else {
+            Node<E> prev = node(index - 1);
+            Node<E> newNode = new Node<>(element, prev.next);
             prev.next = newNode;
         }
         size++;
@@ -44,16 +35,16 @@ public class SingleLinkedList<E> extends AbstractList<E> {
     @Override
     public E remove(int index) {
         rangeCheck(index);
-        Node<E> node = first;
-        if (index == 0){
+        Node<E> deleteNode = first;
+        if (index == 0) {
             first = first.next;
-        }else{
-            Node<E> prev = node(index-1);
-            node = prev.next;
-            prev.next = node.next;
+        } else {
+            Node<E> prev = node(index - 1);
+            deleteNode = prev.next;
+            prev.next = deleteNode.next;
         }
-        size --;
-        return node.element;
+        size--;
+        return deleteNode.element;
     }
 
     @Override
@@ -71,18 +62,18 @@ public class SingleLinkedList<E> extends AbstractList<E> {
 
     @Override
     public int indexOf(E element) {
-        if (element == null){
+        if (element == null) {
             Node<E> node = first;
             for (int i = 0; i < size; i++) {
-                if (node.element == null){
+                if (node.element == null) {
                     return i;
                 }
                 node = node.next;
             }
-        }else{
+        } else {
             Node<E> node = first;
             for (int i = 0; i < size; i++) {
-                if (node.element.equals(element)){
+                if (node.element.equals(element)) {
                     return i;
                 }
                 node = node.next;
@@ -91,7 +82,7 @@ public class SingleLinkedList<E> extends AbstractList<E> {
         return List.ELEMENT_NOT_FOUND;
     }
 
-    private Node<E> node(int index){
+    private Node<E> node(int index) {
         rangeCheck(index);
         Node<E> node = first;
         for (int i = 0; i < index; i++) {
@@ -109,7 +100,7 @@ public class SingleLinkedList<E> extends AbstractList<E> {
         stringBuilder.append("size:").append(size).append(",[");
 
         for (int i = 0; i < size; i++) {
-            if (i != 0){
+            if (i != 0) {
                 stringBuilder.append(",");
             }
             stringBuilder.append(node.element);
@@ -119,5 +110,16 @@ public class SingleLinkedList<E> extends AbstractList<E> {
         stringBuilder.append("]");
 
         return stringBuilder.toString();
+    }
+
+    class Node<E> {
+        E element;
+        Node<E> next;
+
+        public Node(E element, Node<E> next) {
+            this.element = element;
+            this.next = next;
+        }
+
     }
 }
