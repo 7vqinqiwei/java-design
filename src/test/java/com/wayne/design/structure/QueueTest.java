@@ -1,8 +1,7 @@
 package com.wayne.design.structure;
 
+import com.wayne.design.structure._04队列.Queue;
 import org.junit.Test;
-
-import static org.junit.Assert.*;
 
 public class QueueTest {
 

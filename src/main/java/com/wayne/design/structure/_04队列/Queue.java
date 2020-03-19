@@ -1,4 +1,4 @@
-package com.wayne.design.structure;
+package com.wayne.design.structure._04队列;
 
 /**
  * 队列
@@ -7,6 +7,15 @@ package com.wayne.design.structure;
 public class Queue {
     Node first,last;
 
+    public class Node {
+        Object val;
+        Node next;
+        public Node(Object val){
+            this.val = val;
+            next = null;
+        }
+
+    }
     /**
      * 进队
      * @param node
