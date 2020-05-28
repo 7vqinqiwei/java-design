@@ -9,11 +9,8 @@ public class QueueTest {
     public void test() {
         Queue queue = new Queue();
         for (int i = 0; i < 10; i++) {
-            Node node = new Node(i);
+            Queue.Node node = new Queue.Node(i);
             queue.enqueue(node);
-        }
-        while (queue.first != null){
-            System.out.println(queue.dequeue());
         }
     }
 }

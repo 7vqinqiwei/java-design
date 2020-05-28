@@ -7,7 +7,7 @@ package com.wayne.design.structure._04队列;
 public class Queue {
     Node first,last;
 
-    public class Node {
+    public static class Node {
         Object val;
         Node next;
         public Node(Object val){
