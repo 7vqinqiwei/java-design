@@ -31,7 +31,8 @@ public class BusinessApp {
             long start = System.currentTimeMillis();
             for(int i=0;i<100;i++){
                 //读取100次
-                System.out.println(Thread.currentThread().getName() + "读取的数据是+" + goodsService.getNum());
+                goodsService.getNum();
+//                System.out.println(Thread.currentThread().getName() + "读取的数据是+" + goodsService.getNum());
             }
             System.out.println(Thread.currentThread().getName()+"读取商品数据耗时：" +(System.currentTimeMillis()-start)+"ms");
         }
@@ -62,8 +63,8 @@ public class BusinessApp {
     public static void main(String[] args) throws InterruptedException {
         GoodsInfo goodsInfo =
                 new GoodsInfo("Cup",100000,10000);
-        GoodsService goodsService = new GoodsServiceSynImpl(goodsInfo);
-//        GoodsService goodsService = new GoodsServiceLockImpl(goodsInfo);
+//        GoodsService goodsService = new GoodsServiceSynImpl(goodsInfo);
+        GoodsService goodsService = new GoodsServiceLockImpl(goodsInfo);
         for(int i = 0; i< minThreadCount; i++){
             Thread setT = new Thread(new SetThread(goodsService));
             for(int j=0;j<readWriteRatio;j++) {

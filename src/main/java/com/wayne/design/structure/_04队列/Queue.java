@@ -15,6 +15,10 @@ public class Queue {
             next = null;
         }
 
+        public Object getVal(){
+            return val;
+        }
+
     }
     /**
      * 进队
