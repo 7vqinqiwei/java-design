@@ -6,6 +6,7 @@
     <modules>
         <module>design-rpc</module>
         <module>design-spring-tomcat</module>
+        <module>design-spring-tomcat-reverse</module>
     </modules>
     <parent>
         <groupId>org.springframework.boot</groupId>
