@@ -8,7 +8,6 @@ import com.wayne.design.structure._01数组.List;
  */
 public class SingleCircleLinkedList<E> extends AbstractList<E> {
 
-
     private Node<E> first;
 
     private static class Node<E> {
@@ -50,7 +49,6 @@ public class SingleCircleLinkedList<E> extends AbstractList<E> {
     @Override
     public void add(int index, E element) {
         rangeCheckForAdd(index);
-
         if (index == 0) {
             Node<E> newFirst = new Node<>(element, first);
             // 拿到最后一个节点
@@ -67,7 +65,6 @@ public class SingleCircleLinkedList<E> extends AbstractList<E> {
     @Override
     public E remove(int index) {
         rangeCheck(index);
-
         Node<E> node = first;
         if (index == 0) {
             if (size == 1) {
@@ -94,7 +91,6 @@ public class SingleCircleLinkedList<E> extends AbstractList<E> {
                 if (node.element == null) {
                     return i;
                 }
-
                 node = node.next;
             }
         } else {
@@ -103,7 +99,6 @@ public class SingleCircleLinkedList<E> extends AbstractList<E> {
                 if (element.equals(node.element)) {
                     return i;
                 }
-
                 node = node.next;
             }
         }
@@ -118,12 +113,10 @@ public class SingleCircleLinkedList<E> extends AbstractList<E> {
      */
     private Node<E> node(int index) {
         rangeCheck(index);
-
         Node<E> node = first;
         for (int i = 0; i < index; i++) {
             node = node.next;
         }
-
         return node;
     }
 
@@ -144,6 +137,4 @@ public class SingleCircleLinkedList<E> extends AbstractList<E> {
         string.append("]");
         return string.toString();
     }
-
-
 }
