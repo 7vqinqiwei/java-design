@@ -3,9 +3,9 @@ package com.wayne.design.structure._04队列;
 import com.wayne.design.structure._02链表.LinkedList;
 
 /**
- * 队列是两端操作的
- * 一般是一端出一段进 -- 是正向队列 FIFO
+ * 使用链表实现队列
  * @author
+ * @param <E>
  */
 public class QueueWithLinkedList<E> {
 

@@ -4,101 +4,30 @@ import com.wayne.design.structure._01数组.AbstractList;
 import com.wayne.design.structure._01数组.List;
 
 /**
- * 双向循环链表
+ * 双向链表的实现 JDK 官方使用的方式
+ * @author
  */
 public class CircleLinkedList<E> extends AbstractList<E> {
 
-
     private Node<E> first;
-    private Node<E> last;
-    private Node<E> current;
 
-    private static class Node<E> {
+    private Node<E> last;
+
+    class Node<E> {
         E element;
         Node<E> prev;
         Node<E> next;
-
-        public Node(Node<E> prev, E element, Node<E> next) {
+        public Node(Node<E> prev,E element,Node<E> next){
             this.prev = prev;
             this.element = element;
             this.next = next;
         }
 
-        @Override
-        public String toString() {
-            StringBuilder sb = new StringBuilder();
-
-            if (prev != null) {
-                sb.append(prev.element);
-            } else {
-                sb.append("null");
-            }
-
-            sb.append("_").append(element).append("_");
-
-            if (next != null) {
-                sb.append(next.element);
-            } else {
-                sb.append("null");
-            }
-
-            return sb.toString();
-        }
-    }
-
-    public void reset() {
-        current = first;
-    }
-
-    public E next() {
-        if (current == null) {
-            return null;
-        }
-
-        current = current.next;
-        return current.element;
-    }
-
-    public E remove() {
-        if (current == null) {
-            return null;
-        }
-
-        Node<E> next = current.next;
-        E element = remove(current);
-        if (size == 0) {
-            current = null;
-        } else {
-            current = next;
-        }
-
-        return element;
-    }
-
-    @Override
-    public void clear() {
-        size = 0;
-        first = null;
-        last = null;
-    }
-
-    @Override
-    public E get(int index) {
-        return node(index).element;
-    }
-
-    @Override
-    public E set(int index, E element) {
-        Node<E> node = node(index);
-        E old = node.element;
-        node.element = element;
-        return old;
     }
 
     @Override
     public void add(int index, E element) {
         rangeCheckForAdd(index);
-
         // size == 0
         // index == 0
         if (index == size) { // 往最后面添加元素
@@ -125,6 +54,14 @@ public class CircleLinkedList<E> extends AbstractList<E> {
         }
 
         size++;
+        size++;
+    }
+
+    @Override
+    public void clear() {
+        size = 0;
+        first = null;
+        last = null;
     }
 
     @Override
@@ -157,38 +94,42 @@ public class CircleLinkedList<E> extends AbstractList<E> {
     }
 
     @Override
+    public E get(int index) {
+        return node(index).element;
+    }
+
+    @Override
+    public E set(int index, E element) {
+        Node<E> node = node(index);
+        E oldElement = node.element;
+        node.element = element;
+        return oldElement;
+    }
+
+    @Override
     public int indexOf(E element) {
-        if (element == null) {
+        if (element == null){
             Node<E> node = first;
             for (int i = 0; i < size; i++) {
-                if (node.element == null) {
+                if (node.element == null){
                     return i;
                 }
-
                 node = node.next;
             }
-        } else {
+        }else{
             Node<E> node = first;
             for (int i = 0; i < size; i++) {
-                if (element.equals(node.element)) {
+                if (node.element.equals(element)){
                     return i;
                 }
-
                 node = node.next;
             }
         }
         return List.ELEMENT_NOT_FOUND;
     }
 
-    /**
-     * 获取index位置对应的节点对象
-     *
-     * @param index
-     * @return
-     */
-    private Node<E> node(int index) {
+    private Node<E> node(int index){
         rangeCheck(index);
-
         if (index < (size >> 1)) {
             Node<E> node = first;
             for (int i = 0; i < index; i++) {
@@ -206,21 +147,23 @@ public class CircleLinkedList<E> extends AbstractList<E> {
 
     @Override
     public String toString() {
-        StringBuilder string = new StringBuilder();
-        string.append("size=").append(size).append(", [");
+        StringBuilder stringBuilder = new StringBuilder();
+
         Node<E> node = first;
+
+        stringBuilder.append("size:").append(size).append(",[");
+
         for (int i = 0; i < size; i++) {
-            if (i != 0) {
-                string.append(", ");
+            if (i != 0){
+                stringBuilder.append(",");
             }
-
-            string.append(node);
-
+            stringBuilder.append(node.element);
             node = node.next;
         }
-        string.append("]");
-        return string.toString();
-    }
 
+        stringBuilder.append("]");
+
+        return stringBuilder.toString();
+    }
 
 }

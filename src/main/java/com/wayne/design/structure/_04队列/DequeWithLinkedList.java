@@ -3,13 +3,10 @@ package com.wayne.design.structure._04队列;
 import com.wayne.design.structure._02链表.LinkedList;
 
 /**
- * Deque
- * 两端都可以进出操作的队列
- * @param <E>
  * @author
+ * @param <E>
  */
-public class DeQueWithLinkedList<E> {
-
+public class DequeWithLinkedList<E> {
 
     private LinkedList<E> list = new LinkedList<>();
 
@@ -48,6 +45,5 @@ public class DeQueWithLinkedList<E> {
     public E rear() {
         return list.get(list.size() - 1);
     }
-
 
 }
